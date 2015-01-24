@@ -1,0 +1,9 @@
+<a href="/reports/new" class="btn btn-primary">New</a>
+
+<ol id="reports">
+  {{#reports}}
+    <li class="report">
+      <a href="/reports/{{id}}">{{name}}</a>
+    </li>
+  {{/reports}}
+</ol>

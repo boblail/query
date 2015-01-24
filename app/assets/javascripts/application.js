@@ -12,5 +12,12 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
+//= require bootstrap
+//= require underscore
+//= require backbone
+//= require handlebars.runtime
+//= require md5
+//= require ace/ace
+//= require ace/mode-sql
+//= require ace/theme-monokai
 //= require_tree .

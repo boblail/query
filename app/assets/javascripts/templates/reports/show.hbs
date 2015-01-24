@@ -1,0 +1,18 @@
+<a href="/">Back</a>
+
+<h1 class="report-name">{{report/name}}</h1>
+
+<div class="report-author">
+  {{{avatar report/author/email 32 report/author/name}}}
+  {{{report/created}}}
+</div>
+
+<div id="report_query"></div>
+
+<div id="results">
+  {{#unless report/results}}
+    <i class="fa fa-circle-o-notch fa-spin"></i>
+  {{/unless}}
+</div>
+
+<button id="delete_report" class="btn btn-danger">Delete this query</button>
