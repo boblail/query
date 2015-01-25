@@ -4,8 +4,9 @@ class @ShowReportView extends Backbone.View
   events:
     'click #save_button': 'save'
     'click #delete_report': 'destroy'
-    'click h1.report-name': 'beginEditName'
-    'keydown h1.report-name > input': 'keydownName'
+    'click .report-name': 'beginEditName'
+    'keydown .report-name > input': 'keydownName'
+    'blur .report-name > input': 'cancelEditName'
   
   initialize: (options)->
     @report = options.report
@@ -24,10 +25,9 @@ class @ShowReportView extends Backbone.View
   
   renderResults: ->
     results = @report.get('results')
+    columns = @report.get('columns')
     
-    columns = _.keys(results[0])
-    
-    html = "<table><thead><tr>"
+    html = '<table class="table table-striped tablesorter"><thead><tr>'
     for column in columns
       html += "<th>#{column}</th>"
     html += "</tr></thead><tbody>"
@@ -39,13 +39,31 @@ class @ShowReportView extends Backbone.View
     html + "</tbody></table>"
     
     @$el.find('#results').html(html)
+    @$el.find('.tablesorter').tablesorter()
   
   renderError: (jqXhr)->
+    error = JSON.parse(jqXhr.responseText).error
     @$el.find('#results').html """
-      <div class="query-error">
-        #{jqXhr.responseText}
+      <div class="error error-#{error.type}">
+        #{@formatErrors(error.type, error.messages)}
       </div>
     """
+  
+  formatErrors: (type, errors)->
+    switch type
+      when 'validation' then @formatValidationsErrors(errors)
+      else
+        JSON.stringify errors
+  
+  formatValidationsErrors: (errors)->
+    text = ''
+    for key, messages of errors
+      for message in messages
+        if key == 'query'
+          text += '<pre>' + message + '</pre>'
+        else
+          text += key + ': ' + message
+    text
   
   
   
@@ -79,8 +97,8 @@ class @ShowReportView extends Backbone.View
   
   
   beginEditName: ->
-    $h1 = @$el.find('.report-name')
-    $input = $h1.html('<input id="report_name" type="text" />').find('input')
+    $h2 = @$el.find('.report-name')
+    $input = $h2.html('<input id="report_name" type="text" />').find('input')
     $input.val(@report.get('name')).focus().select()
   
   keydownName: (e)->
@@ -99,8 +117,8 @@ class @ShowReportView extends Backbone.View
           console.log 'error', jqXhr
   
   endEditName: ->
-    $h1 = @$el.find('.report-name')
-    $h1.html(@report.get('name'))
+    $h2 = @$el.find('.report-name')
+    $h2.html(@report.get('name'))
   
   
   save: (e)->

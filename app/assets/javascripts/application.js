@@ -12,6 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.tablesorter.js
+//= require jquery.timeago.js
 //= require bootstrap
 //= require underscore
 //= require backbone

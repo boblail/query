@@ -8,15 +8,9 @@
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body class="logged-out">
   
-  <header class="stripe">
-    <div class="waistcoat">
-      <div class="logo">Query</div>
-      <a href="/reports/new" class="btn btn-primary">New</a>
-      <%= link_to avatar_for(current_user, size: 64), signout_path, class: "btn-signout" %>
-    </div>
-  </header>
+  <h1 class="logo">Query</h1>
   
   <%= yield %>
   

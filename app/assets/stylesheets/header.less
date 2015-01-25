@@ -1,0 +1,59 @@
+@import "bootstrap_variables.less";
+
+header {
+  background: lighten(@brand-primary, 25%);
+  height: 52px;
+  
+  &.stripe {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  
+  .logo {
+    font-size: 68px;
+    line-height: 0.88em;
+    float: left;
+    padding: 0;
+  }
+  
+  .btn {
+    position: relative;
+    top: 11px;
+    left: 36px;
+  }
+  
+  &::after {
+    content: '.';
+    display: block;
+    color: transparent;
+    clear: both;
+  }
+}
+
+.btn-signout {
+  position: relative;
+  top: 4px;
+  float: right;
+  
+  &::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+    text-align: center;
+    font-family: 'FontAwesome';
+    content: '\f011';
+    color: transparent;
+    line-height: 64px;
+    font-size: 40px;
+  }
+  
+  &:hover {
+    &::after {
+      background: rgba(0, 0, 0, 0.5);
+      color: white;
+    }
+  }
+}

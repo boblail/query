@@ -13,19 +13,22 @@
 @gray-light:             lighten(#000, 60%);   // #999
 @gray-lighter:           lighten(#000, 93.5%); // #eee
 
-@brand-primary:         #99c355;
+@brand-primary:         #27BA99;
 @brand-success:         #5cb85c;
 @brand-info:            #5bc0de;
 @brand-warning:         #f0ad4e;
 @brand-danger:          #da171f;
 
+@hover-bg: rgba(100, 252, 218, 0.2);
+
+@horizontal-padding: 24px;
 
 //== Scaffolding
 //
 //## Settings for some of the most global styles.
 
 //** Background color for `<body>`.
-@body-bg:               #fff;
+@body-bg:               white;
 //** Global text color on `<body>`.
 @text-color:            @gray-dark;
 
@@ -33,7 +36,7 @@
 @link-color:            @brand-primary;
 //** Link hover color set via `darken()` function.
 @link-hover-color:      darken(@link-color, 15%);
-@link-hover-decoration: underline;
+@link-hover-decoration: none;
 
 
 //== Typography
@@ -52,7 +55,7 @@
 
 @font-size-h1:            floor((@font-size-base * 2.6)); // ~36px
 @font-size-h2:            floor((@font-size-base * 2.15)); // ~30px
-@font-size-h3:            ceil((@font-size-base * 1.7)); // ~24px
+@font-size-h3:            ceil((@font-size-base * 1.6)); // ~24px
 @font-size-h4:            ceil((@font-size-base * 1.25)); // ~18px
 @font-size-h5:            @font-size-base;
 @font-size-h6:            ceil((@font-size-base * 0.85)); // ~12px

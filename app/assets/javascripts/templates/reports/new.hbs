@@ -1,11 +1,29 @@
-<a href="/">Back</a>
+<div class="stripe white-stripe report-title report-summary">
+  <div class="waistcoat">
+    <a class="btn-close" href="/">Back</a>
+    
+    <h2 class="report-name">
+      <input type="text" id="report_name" />
+    </h2>
+    
+    <div class="report-author">
+      Created by
+      {{{avatar report/author/email 18 report/author/name}}}
+      <span class="report-author-name">{{report/author/name}}</span>
+    </div>
+  </div>
+</div>
 
-<form>
-  <input type="text" id="report_name" />
-  <div id="report_query"></div>
-  
-  <button id="save_button" class="btn btn-primary">Save</button>
-</form>
+<div class="stripe report-query expanded" id="report_query_container">
+  <div id="report_query" class="waistcoat"></div>
+</div>
 
-<div id="results">
+<div class="stripe white-stripe report-results">
+  <div id="results" class="waistcoat"></div>
+</div>
+
+<div class="stripe white-stripe buttons">
+  <div class="waistcoat">
+    <button id="save_button" class="btn btn-primary btn-lg">Save</button>
+  </div>
 </div>

@@ -1,6 +1,7 @@
 class Report < ActiveRecord::Base
   
   validates :name, :query, presence: true
+  validates :name, length: {in: 5...255}
   
   belongs_to :user
   

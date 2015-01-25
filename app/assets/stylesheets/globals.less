@@ -1,0 +1,54 @@
+@import "bootstrap_variables.less";
+
+::selection {
+  background: rgba(142, 242, 84, 0.31);
+}
+
+::-moz-selection {
+  background: rgba(142, 242, 84, 0.31);
+}
+
+.logo {
+  font-family: 'PT Serif';
+  font-weight: 700;
+  font-style: italic;
+}
+
+.avatar { 
+  border-radius: 100%;
+}
+
+.stripe {
+  padding: 32px @horizontal-padding;
+}
+
+.white-stripe {
+  background: white;
+}
+
+.waistcoat {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.btn-close {
+  float: right;
+  
+  color: #d8d8d2;
+  font-size: 1.5em;
+  width: 2em;
+  height: 2em;
+  line-height: 1em;
+  padding: 0.5em;
+  overflow: hidden;
+  white-space: nowrap;
+  
+  &::before {
+    font-family: 'FontAwesome';
+    content: '\f00d';
+    display: inline-block;
+    width: 1em;
+    text-align: center;
+    margin-right: 1em;
+  }
+}

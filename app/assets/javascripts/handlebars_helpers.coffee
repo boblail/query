@@ -5,3 +5,7 @@ Handlebars.registerHelper 'avatar', (email, size, title)->
     "<img src=\"#{gravatarUrl}\" class=\"avatar\" width=\"#{size}\" height=\"#{size}\" rel=\"tooltip\" title=\"#{title}\" />"
   else
     "<img src=\"#{gravatarUrl}\" class=\"avatar\" width=\"#{size}\" height=\"#{size}\" />"
+
+Handlebars.registerHelper 'timeago', (date)->
+  date = new Date(date) unless _.isDate(date)
+  $.timeago(date)

@@ -3,7 +3,7 @@ class @NewReportView extends @ShowReportView
   
   initialize: (options)->
     @reports = window.reports
-    options.report = new Report()
+    options.report = new Report(author: window.user)
     super
 
   render: ->

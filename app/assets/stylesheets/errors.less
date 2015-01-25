@@ -1,0 +1,24 @@
+@import "bootstrap_variables.less";
+
+.error {
+  background: rgb(245, 100, 128);
+  margin: -32px -@horizontal-padding 0;
+  padding: 16px @horizontal-padding 16px @horizontal-padding + 48;
+  
+  &.error-validation {
+    &::before {
+      content: '\f1e2';
+      font-family: 'FontAwesome';
+      font-size: 30px;
+      text-indent: -48px;
+      float: left;
+      position: relative;
+      top: 12px;
+    }
+  }
+  
+  pre {
+    font-family: Monaco, Menlo, 'Ubuntu Mono', Consolas, source-code-pro, monospace;
+    white-space: pre-wrap;
+  }
+} 

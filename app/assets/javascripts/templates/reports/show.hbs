@@ -1,18 +1,34 @@
-<a href="/">Back</a>
-
-<h1 class="report-name">{{report/name}}</h1>
-
-<div class="report-author">
-  {{{avatar report/author/email 32 report/author/name}}}
-  {{{report/created}}}
+<div class="stripe white-stripe report-title report-summary">
+  <div class="waistcoat">
+    <a class="btn-close" href="/">Back</a>
+    
+    <h2 class="report-name">{{report/name}}</h2>
+    
+    <div class="report-author">
+      Created by
+      {{{avatar report/author/email 18 report/author/name}}}
+      <span class="report-author-name">{{report/author/name}}</span>
+      <span class="report-age">{{{timeago report/created}}}</span>
+    </div>
+  </div>
+  
+  <!-- <a class="toggle-report-query">Toggle</a> -->
 </div>
 
-<div id="report_query"></div>
-
-<div id="results">
-  {{#unless report/results}}
-    <i class="fa fa-circle-o-notch fa-spin"></i>
-  {{/unless}}
+<div class="stripe report-query expanded" id="report_query_container">
+  <div id="report_query" class="waistcoat"></div>
 </div>
 
-<button id="delete_report" class="btn btn-danger">Delete this query</button>
+<div class="stripe white-stripe report-results">
+  <div id="results" class="waistcoat">
+    {{#unless report/results}}
+      <i class="fa fa-circle-o-notch fa-spin"></i>
+    {{/unless}}
+  </div>
+</div>
+
+<div class="stripe white-stripe buttons">
+  <div class="waistcoat">
+    <button id="delete_report" class="btn btn-danger btn-xs">Delete this query</button>
+  </div>
+</div>

@@ -4,7 +4,7 @@ class ReportsController < ApplicationController
   before_filter :authenticate_user!, except: [:index]
   
   def index
-    return render template: "logged_out" unless current_user
+    return render template: "sign_in", layout: "logged_out" unless current_user
     @reports = Report.all
   end
   
@@ -14,7 +14,7 @@ class ReportsController < ApplicationController
     if report.save
       render json: ReportPresenter.new(report)
     else
-      render json: report.errors, status: :unprocessable_entity
+      render json: {error: {type: 'validation', messages: report.errors}}, status: :unprocessable_entity
     end
   end
   
@@ -23,7 +23,7 @@ class ReportsController < ApplicationController
     if report.save
       render json: ReportPresenter.new(report)
     else
-      render json: report.errors, status: :unprocessable_entity
+      render json: {error: {type: 'validation', messages: report.errors}}, status: :unprocessable_entity
     end
   end
   

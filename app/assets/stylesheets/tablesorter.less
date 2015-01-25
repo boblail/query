@@ -1,0 +1,28 @@
+@import "bootstrap_variables.less";
+
+table.tablesorter thead tr .header {
+  background-image: url(/bg.gif);
+  background-repeat: no-repeat;
+  background-position: center right;
+  cursor: pointer;
+  
+  &:hover {
+    background-color: fade(@hover-bg, 10%);
+    border-bottom: 4px solid lighten(@brand-primary, 30%);
+  }
+}
+
+table.tablesorter thead tr .headerSortUp {
+  background-image: url(/asc.gif);
+}
+
+table.tablesorter thead tr .headerSortDown {
+  background-image: url(/desc.gif);
+}
+
+table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSortUp {
+  &, &:hover {
+    background-color: @hover-bg;
+    border-bottom: 4px solid lighten(@brand-primary, 15%);
+  }
+}

@@ -1,9 +1,18 @@
-<a href="/reports/new" class="btn btn-primary">New</a>
+<div class="stripe white-stripe reports-list">
+  <div class="waistcoat">
+    {{#reports}}
+      <a href="/reports/{{id}}" class="report">
+        <div class="report-summary">
+          <h3 class="report-name">{{name}}</h3>
 
-<ol id="reports">
-  {{#reports}}
-    <li class="report">
-      <a href="/reports/{{id}}">{{name}}</a>
-    </li>
-  {{/reports}}
-</ol>
+          <div class="report-author">
+            Created by
+            {{{avatar author/email 18 author/name}}}
+            <span class="report-author-name">{{author/name}}</span>
+            <span class="report-age">{{{timeago created}}}</span>
+          </div>
+        </div>
+      </a>
+    {{/reports}}
+  </div>
+</div>
