@@ -19,9 +19,9 @@ ActiveRecord::Schema.define(version: 20150124184744) do
   create_table "reports", force: :cascade do |t|
     t.string   "name",         null: false
     t.text     "query",        null: false
-    t.jsonb    "results"
+    t.json    "results"
     t.integer  "user_id",      null: false
-    t.jsonb    "columns"
+    t.json    "columns"
     t.datetime "performed_at"
     t.integer  "query_time"
     t.datetime "updated_at"

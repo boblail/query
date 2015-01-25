@@ -3,7 +3,7 @@ class AddFieldsToReports < ActiveRecord::Migration
     Report.delete_all
     
     add_column :reports, :user_id, :integer, null: false
-    add_column :reports, :columns, :jsonb
+    add_column :reports, :columns, :json
     add_column :reports, :performed_at, :timestamp
     add_column :reports, :query_time, :integer
     
@@ -13,7 +13,7 @@ class AddFieldsToReports < ActiveRecord::Migration
   
   def down
     remove_column :reports, :user_id, :integer, null: false
-    remove_column :reports, :columns, :jsonb
+    remove_column :reports, :columns, :json
     remove_column :reports, :performed_at, :timestamp
     remove_column :reports, :query_time, :integer
 
