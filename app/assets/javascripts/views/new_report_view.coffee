@@ -4,6 +4,7 @@ class @NewReportView extends @ShowReportView
   initialize: (options)->
     @reports = window.reports
     super
+    @readonly = false
 
   render: ->
     super

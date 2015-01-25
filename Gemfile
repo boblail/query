@@ -36,6 +36,7 @@ gem "handlebars_assets"
 gem "octokit"
 gem "omniauth"
 gem "omniauth-github", github: "intridea/omniauth-github"
+gem "cancan"
 
 # Use Capistrano for deployment
 # gem "capistrano-rails", group: :development

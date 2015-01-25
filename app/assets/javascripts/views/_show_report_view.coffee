@@ -10,9 +10,11 @@ class @ShowReportView extends Backbone.View
   
   initialize: (options)->
     @report = options.report
+    @readonly = @report.get('author').id isnt window.user.id
   
   render: ->
     @$el.html @template
+      readonly: @readonly
       report: @report.toJSON()
     
     if @report.get('results')
@@ -70,6 +72,7 @@ class @ShowReportView extends Backbone.View
     @editor.setTheme "ace/theme/monokai"
     @editor.setShowPrintMargin false
     @editor.$blockScrolling = Infinity
+    @editor.setReadOnly @readonly
     @editor.setValue @report.get('query')
     session = @editor.getSession()
     session.setMode "ace/mode/sql"

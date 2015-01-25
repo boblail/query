@@ -2,7 +2,7 @@
   <div class="waistcoat">
     <a class="btn-close" href="/">Back</a>
     
-    <h2 class="report-name inline-edit">{{report/name}}</h2>
+    <h2 class="report-name {{#unless readonly}}inline-edit{{/unless}}">{{report/name}}</h2>
     
     <div class="report-author">
       Created by
@@ -29,8 +29,10 @@
   </div>
 </div>
 
+{{#unless readonly}}
 <div class="stripe white-stripe buttons">
   <div class="waistcoat">
     <button id="delete_report" class="btn btn-danger btn-xs">Delete this query</button>
   </div>
 </div>
+{{/unless}}

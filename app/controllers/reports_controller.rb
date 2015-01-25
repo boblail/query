@@ -11,6 +11,9 @@ class ReportsController < ApplicationController
   def create
     report = Report.new(report_params)
     report.user = current_user
+    
+    authorize! :create, report
+    
     if report.save
       render json: ReportPresenter.new(report)
     else
@@ -19,6 +22,8 @@ class ReportsController < ApplicationController
   end
   
   def update
+    authorize! :update, report
+    
     report.assign_attributes report_params
     if report.save
       render json: ReportPresenter.new(report)
@@ -29,11 +34,17 @@ class ReportsController < ApplicationController
   
   def destroy
     report = Report.find_by_id params[:id]
-    report.destroy if report
+    
+    if report
+      authorize! :destroy, report
+      report.destroy 
+    end
+    
     render json: {}
   end
   
   def results
+    authorize! :read, report
     render json: report.perform!
   end
   
