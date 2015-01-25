@@ -1,6 +1,6 @@
 [submodule "vendor/ace-builds"]
 	path = vendor/ace-builds
-	url = git@github.com:ajaxorg/ace-builds.git
+	url = https://github.com/ajaxorg/ace-builds.git 
 [submodule "vendor/bootstrap"]
 	path = vendor/bootstrap
-	url = git@github.com:twbs/bootstrap.git
+	url = https://github.com/twbs/bootstrap.git
