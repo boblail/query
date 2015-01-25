@@ -4,9 +4,9 @@ class @ShowReportView extends Backbone.View
   events:
     'click #save_button': 'save'
     'click #delete_report': 'destroy'
-    'click .report-name': 'beginEditName'
-    'keydown .report-name > input': 'keydownName'
-    'blur .report-name > input': 'cancelEditName'
+    'click .report-name.inline-edit': 'beginEditName'
+    'keydown .report-name.inline-edit > input': 'keydownName'
+    'blur .report-name.inline-edit > input': 'cancelEditName'
   
   initialize: (options)->
     @report = options.report
@@ -17,8 +17,6 @@ class @ShowReportView extends Backbone.View
     
     if @report.get('results')
       @renderResults()
-    else
-      @report.perform => @render()
     
     if @$el.find('#report_query').length
       @activateEditor()

@@ -4,6 +4,7 @@ class @Router extends Backbone.Router
     "": "listReports"
     "reports/new": "newReport"
     "reports/:id": "showReport"
+    "reports/:id/copy": "copyReport"
   
   initialize: (options)->
     @reports = options.reports
@@ -27,4 +28,15 @@ class @Router extends Backbone.Router
   newReport: ->
     view = new NewReportView
       el: document.getElementById("app")
+      report: new Report(author: window.user)
     view.render()
+  
+  copyReport: (id)->
+    report = @reports.get(id)
+    if report
+      view = new NewReportView
+        el: document.getElementById("app")
+        report: report.copy(author: window.user)
+      view.render()
+    else
+      $('#app').html HandlebarsTemplates['404']()

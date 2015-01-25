@@ -2,7 +2,7 @@
   <div class="waistcoat">
     <a class="btn-close" href="/">Back</a>
     
-    <h2 class="report-name">{{report/name}}</h2>
+    <h2 class="report-name inline-edit">{{report/name}}</h2>
     
     <div class="report-author">
       Created by
@@ -10,6 +10,8 @@
       <span class="report-author-name">{{report/author/name}}</span>
       <span class="report-age">{{{timeago report/created}}}</span>
     </div>
+    
+    <a href="/reports/{{report/id}}/copy" class="btn btn-default btn-xs">Copy</a>
   </div>
   
   <!-- <a class="toggle-report-query">Toggle</a> -->

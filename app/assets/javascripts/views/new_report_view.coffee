@@ -3,12 +3,14 @@ class @NewReportView extends @ShowReportView
   
   initialize: (options)->
     @reports = window.reports
-    options.report = new Report(author: window.user)
     super
 
   render: ->
     super
-    @$el.find('input:first').focus()
+    @$el.find('#report_name')
+      .val(@report.get('name'))
+      .focus()
+      .select()
 
   save: (e)->
     e.preventDefault() if e

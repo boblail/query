@@ -2,9 +2,12 @@
 
 Browse and create queries
 
-### To Do List
+### 1.0
 
  - [ ] Add authorization (you can only edit your own reports)
- - [ ] Allow forking queries
- - [ ] Style it awesomely
+ - [ ] Add Excel export
+
+### To Do List
+
  - [ ] Allow refreshing queries
+ - [ ] Add auto-graphing
