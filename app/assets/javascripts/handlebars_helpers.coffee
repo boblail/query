@@ -8,3 +8,10 @@ Handlebars.registerHelper 'avatar', (email, size, title)->
 Handlebars.registerHelper 'timeago', (date)->
   date = new Date(date) unless _.isDate(date)
   $.timeago(date)
+
+Handlebars.registerHelper 'formatDuration', (milliseconds)->
+  if milliseconds > 1000
+    seconds = milliseconds / 1000
+    "#{seconds.toFixed(2)}s"
+  else
+    "#{milliseconds}ms"

@@ -32,7 +32,7 @@ class ReportPresenter
       
       columns: report.columns,
       results: report.results,
-      query_time: report.query_time }
+      queryTime: report.query_time }
   end
   
 end

@@ -42,7 +42,8 @@ class @ShowReportView extends Backbone.View
   renderResults: ->
     results = @report.get('results')
     columns = @report.get('columns')
-    performed = new Date(@report.get('performed'))
+    performed = @report.get('performed')
+    queryTime = @report.get('queryTime')
     
     html = '<table class="table table-striped tablesorter"><thead><tr>'
     for column in columns
@@ -56,7 +57,8 @@ class @ShowReportView extends Backbone.View
     html + "</tbody></table>"
     
     @$el.find('#results').html html
-    @$el.find('#report_performed').html $.timeago(performed)
+    @$el.find('#report_performed').html Handlebars.helpers.timeago performed
+    @$el.find('#report_query_time').html Handlebars.helpers.formatDuration queryTime
     @$el.find('.tablesorter').tablesorter()
   
   renderError: (jqXhr)->

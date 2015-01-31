@@ -14,6 +14,10 @@
       <i class="fa fa-files-o"></i> Copy
     </a>
     
+    <a href="/reports/{{report/id}}/xlsx" class="btn btn-default btn-xs download">
+      <i class="fa fa-file-excel-o"></i> Export to Excel
+    </a>
+    
     <button id="toggle_report_query" type="button" class="btn btn-default btn-xs {{#unless readonly}}active{{/unless}}" data-toggle="button" aria-pressed="false" autocomplete="off">
       <i class="fa"></i>
     </button>
@@ -26,25 +30,24 @@
 </div>
 
 <div class="stripe white-stripe report-results">
-  <div id="results" class="waistcoat">
-    {{#unless report/results}}
-      <i class="fa fa-circle-o-notch fa-spin"></i>
-    {{/unless}}
+  <div class="waistcoat">
+    <div class="report-results-info">
+      Performed
+      <span id="report_performed" class="report-performed">{{{timeago report/performed}}}</span>
+      in
+      <span id="report_query_time" class="report-query-time">{{{formatDuration report/queryTime}}}</span>
+    </div>
+    
+    <a href="/reports/{{report/id}}/perform" id="refresh_results_button" class="btn btn-default btn-xs">
+      <i class="fa fa-refresh"></i> Refresh
+    </a>
+    
+    <div id="results">
+      {{#unless report/results}}
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+      {{/unless}}
+    </div>
   </div>
-  <div class="report-results-info">
-    Performed
-    <span id="report_performed" class="report-performed">{{{timeago report/performed}}}</span>
-  </div>
-  
-  <a href="/reports/{{report/id}}/perform" id="refresh_results_button" class="btn btn-default btn-xs">
-    <i class="fa fa-refresh"></i> Refresh
-  </a>
-  
-  {{#unless mobile}}
-  <a href="/reports/{{report/id}}/xlsx" class="btn btn-default btn-xs download">
-    <i class="fa fa-file-excel-o"></i> Export to Excel
-  </a>
-  {{/unless}}
 </div>
 
 {{#unless readonly}}
