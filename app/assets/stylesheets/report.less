@@ -34,3 +34,13 @@
 .buttons {
   text-align: right;
 }
+
+#toggle_report_query {
+  .fa::before { content: '\f06e' }
+  &::after { content: 'Show query' }
+  
+  &.active {
+    .fa::before { content: '\f070' }
+    &::after { content: 'Hide query' }
+  }
+}
