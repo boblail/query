@@ -27,7 +27,7 @@ gem "jquery-rails"
 # gem "bcrypt", "~> 3.1.7"
 
 # Use Unicorn as the app server
-gem "unicorn"
+gem "unicorn-rails"
 
 # Use Handlebars for front-end templates
 gem "handlebars_assets"
@@ -40,6 +40,8 @@ gem "cancan"
 
 # Use Capistrano for deployment
 # gem "capistrano-rails", group: :development
+
+gem "rack-mobile-detect", require: "rack/mobile-detect"
 
 group :production do
   gem "rails_12factor"

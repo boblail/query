@@ -7,25 +7,42 @@ class @ShowReportView extends Backbone.View
     'click .report-name.inline-edit': 'beginEditName'
     'keydown .report-name.inline-edit > input': 'keydownName'
     'blur .report-name.inline-edit > input': 'cancelEditName'
+    'click #refresh_results_button': 'refreshResults'
+    'click #toggle_report_query': 'toggleReportQuery'
   
   initialize: (options)->
     @report = options.report
     @readonly = @report.get('author').id isnt window.user.id
+    @readonly = @mobile = true unless window.ace?
   
   render: ->
     @$el.html @template
       readonly: @readonly
+      mobile: @mobile
       report: @report.toJSON()
     
     if @report.get('results')
       @renderResults()
     
-    if @$el.find('#report_query').length
+    if @$el.find('#report_query').length and !@mobile
       @activateEditor()
+  
+  refreshResults: (e)->
+    e.preventDefault() if e
+    e.stopImmediatePropagation() if e
+    $('#refresh_results_button')
+      .html('<i class="fa fa-refresh fa-spin"></i> Refreshing')
+      .prop('disabled', true)
+    @report.perform =>
+      @renderResults()
+      $('#refresh_results_button')
+        .html('<i class="fa fa-refresh"></i> Refresh')
+        .prop('disabled', false)
   
   renderResults: ->
     results = @report.get('results')
     columns = @report.get('columns')
+    performed = new Date(@report.get('performed'))
     
     html = '<table class="table table-striped tablesorter"><thead><tr>'
     for column in columns
@@ -38,7 +55,8 @@ class @ShowReportView extends Backbone.View
       html += "</tr>"
     html + "</tbody></table>"
     
-    @$el.find('#results').html(html)
+    @$el.find('#results').html html
+    @$el.find('#report_performed').html $.timeago(performed)
     @$el.find('.tablesorter').tablesorter()
   
   renderError: (jqXhr)->
@@ -141,3 +159,9 @@ class @ShowReportView extends Backbone.View
         window.router.navigate "/", trigger: true
       error: ->
         console.log 'error', arguments
+  
+  
+  
+  toggleReportQuery: (e)->
+    e.preventDefault() if e
+    $('#report_query_container').toggleClass('expanded')

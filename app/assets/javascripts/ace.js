@@ -10,18 +10,6 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
-//= require jquery_ujs
-//= require jquery.tablesorter.js
-//= require jquery.timeago.js
-//= require bootstrap
-//= require underscore
-//= require backbone
-//= require handlebars.runtime
-//= require md5
-//= require boot
-//= require handlebars_helpers
-//= require router
-//= require_tree ./models
-//= require_tree ./templates
-//= require_tree ./views
+//= require ace/ace
+//= require ace/mode-sql
+//= require ace/theme-monokai

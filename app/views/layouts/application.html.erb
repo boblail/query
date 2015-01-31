@@ -1,11 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
   <title>Query</title>
+  
   <%= stylesheet_link_tag    "application", media: "all" %>
-  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
-  <link href="http://fonts.googleapis.com/css?family=PT+Serif:700italic" rel="stylesheet" type="text/css" />
+  <%= font_awesome_link_tag %>
+  <%= google_font_link_tag %>
   <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag "ace" unless mobile? %>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -13,7 +19,9 @@
   <header class="stripe">
     <div class="waistcoat">
       <a href="/" class="logo">Query</a>
+      <% unless mobile? %>
       <a href="/reports/new" class="btn btn-primary">New</a>
+      <% end %>
       <%= link_to avatar_for(current_user, size: 64), signout_path, class: "btn-signout" %>
     </div>
   </header>

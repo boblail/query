@@ -6,7 +6,7 @@
 //
 //  require ./bootstrap/affix.js
 //  require ./bootstrap/alert.js
-//  require ./bootstrap/button.js
+//= require ./bootstrap/button.js
 //  require ./bootstrap/carousel.js
 //  require ./bootstrap/collapse.js
 //  require ./bootstrap/dropdown.js

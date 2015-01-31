@@ -2,7 +2,7 @@
 
 .report-title {
   background: white;
-  padding: 32px @horizontal-padding;
+  padding: 32px @horizontal-padding 8px;
   
   h2 { margin-right: 48px; }
   input {
@@ -10,22 +10,24 @@
     border: 1px solid rgb(184, 226, 160);
     height: 42px;
     
-    &:focus {
-      outline: 0;
-      box-shadow: 0 0 2px rgba(142, 242, 84, 0.31);
-    }
+    position: relative;
+    top: -2px;
+    left: -2px;
+    margin: -2px 0 -4px;
   }
 }
 
 .report-query {
   background: #272822;
-  transition: height 0.5s;
-  height: 0;
+  transition: height 0.5s, margin 0.5s;
+  height: 0px;
   overflow: hidden;
   padding: 0 @horizontal-padding;
+  margin: 0 0;
   
   &.expanded {
     height: 364px;
+    margin: 16px 0;
   }
 }
 
@@ -39,5 +41,5 @@
 
 .report-results {
   background: white;
-  padding: 32px @horizontal-padding;
+  padding: 8px @horizontal-padding 32px;
 }

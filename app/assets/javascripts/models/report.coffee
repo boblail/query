@@ -2,9 +2,10 @@ class @Report extends Backbone.Model
   urlRoot: "/api/v1/reports"
   
   perform: (callback)->
-    $.getJSON "#{@url()}/results", (results)=>
-      @set "results", results
-      callback()
+    $.getJSON "#{@url()}/results", (resp)=>
+      if @set @parse(resp)
+        @trigger 'sync', @, resp
+        callback()
   
   copy: (newAttributes)->
     newAttributes.query = @get('query')

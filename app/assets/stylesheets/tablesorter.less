@@ -5,10 +5,11 @@ table.tablesorter thead tr .header {
   background-repeat: no-repeat;
   background-position: center right;
   cursor: pointer;
+  border-bottom-width: 4px;
   
   &:hover {
     background-color: fade(@hover-bg, 10%);
-    border-bottom: 4px solid lighten(@brand-primary, 30%);
+    border-bottom-color: lighten(@brand-primary, 30%);
   }
 }
 

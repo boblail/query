@@ -37,7 +37,7 @@ class ReportsController < ApplicationController
     
     if report
       authorize! :destroy, report
-      report.destroy 
+      report.destroy
     end
     
     render json: {}
@@ -45,7 +45,8 @@ class ReportsController < ApplicationController
   
   def results
     authorize! :read, report
-    render json: report.perform!
+    report.perform!
+    render json: ReportPresenter.new(report)
   end
   
 private

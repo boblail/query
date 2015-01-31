@@ -5,9 +5,14 @@ class ApplicationController < ActionController::Base
   
   helper_method :current_user
   helper_method :user_signed_in?
+  helper_method :mobile?
   
   rescue_from CanCan::AccessDenied do
     head 403
+  end
+  
+  def mobile?
+    !request.env["X_MOBILE_DEVICE"].blank?
   end
   
 private

@@ -128,6 +128,8 @@ GEM
       method_source (~> 0.8.1)
       slop (~> 3.4)
     rack (1.6.0)
+    rack-mobile-detect (0.4.0)
+      rack
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (4.2.0)
@@ -198,6 +200,9 @@ GEM
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
+    unicorn-rails (2.2.0)
+      rack
+      unicorn
     web-console (2.0.0)
       activemodel (~> 4.0)
       binding_of_caller (>= 0.7.2)
@@ -219,11 +224,12 @@ DEPENDENCIES
   omniauth-github!
   pg
   pry
+  rack-mobile-detect
   rails (= 4.2.0)
   rails_12factor
   sass-rails (~> 5.0)
   spring
   therubyracer
   uglifier (>= 1.3.0)
-  unicorn
+  unicorn-rails
   web-console (~> 2.0)

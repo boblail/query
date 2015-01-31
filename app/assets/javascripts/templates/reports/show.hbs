@@ -11,15 +11,19 @@
       <span class="report-age">{{{timeago report/created}}}</span>
     </div>
     
+    {{#unless mobile}}
     <a href="/reports/{{report/id}}/copy" class="btn btn-default btn-xs">
       <i class="fa fa-files-o"></i> Copy
     </a>
+    
+    <button id="toggle_report_query" type="button" class="btn btn-default btn-xs {{#unless readonly}}active{{/unless}}" data-toggle="button" aria-pressed="false" autocomplete="off">
+      Show query
+    </button>
+    {{/unless}}
   </div>
-  
-  <!-- <a class="toggle-report-query">Toggle</a> -->
 </div>
 
-<div class="stripe report-query expanded" id="report_query_container">
+<div class="stripe report-query {{#unless readonly}}expanded{{/unless}}" id="report_query_container">
   <div id="report_query" class="waistcoat"></div>
 </div>
 
@@ -29,6 +33,14 @@
       <i class="fa fa-circle-o-notch fa-spin"></i>
     {{/unless}}
   </div>
+  <div class="report-results-info">
+    Performed
+    <span id="report_performed" class="report-performed">{{{timeago report/performed}}}</span>
+  </div>
+  
+  <a href="/reports/{{report/id}}/perform" id="refresh_results_button" class="btn btn-default btn-xs">
+    <i class="fa fa-refresh"></i> Refresh
+  </a>
 </div>
 
 {{#unless readonly}}
