@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   get "/signout" => "sessions#destroy", :as => :signout
   get "/auth/failure" => "sessions#failure"
   
+  get "reports/:id/xlsx" => "reports#download"
+  
   get "*path" => "reports#index"
   get "" => "reports#index", as: :root
   

@@ -39,6 +39,12 @@
   <a href="/reports/{{report/id}}/perform" id="refresh_results_button" class="btn btn-default btn-xs">
     <i class="fa fa-refresh"></i> Refresh
   </a>
+  
+  {{#unless mobile}}
+  <a href="/reports/{{report/id}}/xlsx" class="btn btn-default btn-xs download">
+    <i class="fa fa-file-excel-o"></i> Export to Excel
+  </a>
+  {{/unless}}
 </div>
 
 {{#unless readonly}}

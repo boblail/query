@@ -1,6 +1,6 @@
 class ReportsController < ApplicationController
   attr_reader :report
-  before_filter :find_report, only: [:results, :update]
+  before_filter :find_report, only: [:download, :results, :update]
   before_filter :authenticate_user!, except: [:index]
   
   def index
@@ -19,6 +19,14 @@ class ReportsController < ApplicationController
     else
       render json: {error: {type: 'validation', messages: report.errors}}, status: :unprocessable_entity
     end
+  end
+  
+  def download
+    authorize! :read, report
+    send_data ReportExcelPresenter.new(report),
+      type: :xlsx,
+      filename: "#{report.name}.xlsx",
+      disposition: "attachment"
   end
   
   def update

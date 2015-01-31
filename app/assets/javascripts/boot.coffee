@@ -5,7 +5,8 @@
     Backbone.history.start(pushState: true)
     
     $('#app').on 'click', 'a', (e)->
-      href = $(e.target).attr('href')
-      if href
+      $a = $(e.target)
+      href = $a.attr('href')
+      if href and !$a.hasClass('download')
         e.preventDefault()
         window.router.navigate href, trigger: true

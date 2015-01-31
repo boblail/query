@@ -43,6 +43,8 @@ gem "cancan"
 
 gem "rack-mobile-detect", require: "rack/mobile-detect"
 
+gem "xlsx", github: "concordia-publishing-house/xlsx", branch: "master"
+
 group :production do
   gem "rails_12factor"
 end
