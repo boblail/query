@@ -1,12 +1,15 @@
 @import "bootstrap_variables.less";
 
 table.tablesorter thead tr .header {
-  background-image: url(/bg.gif);
-  background-repeat: no-repeat;
-  background-position: center right;
   cursor: pointer;
   border-bottom-width: 4px;
-  padding-right: 20px;
+  
+  &::after {
+    font-family: 'FontAwesome';
+    content: '\f0dc';
+    margin-left: 0.5em;
+    font-size: 0.8em;
+  }
   
   &:hover {
     background-color: fade(@hover-bg, 10%);
@@ -14,15 +17,11 @@ table.tablesorter thead tr .header {
   }
 }
 
+table.tablesorter thead tr .headerSortUp::after { content: '\f0de'; }
+table.tablesorter thead tr .headerSortDown::after { content: '\f0dd'; }
+
+table.tablesorter thead tr .headerSortDown,
 table.tablesorter thead tr .headerSortUp {
-  background-image: url(/asc.gif);
-}
-
-table.tablesorter thead tr .headerSortDown {
-  background-image: url(/desc.gif);
-}
-
-table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSortUp {
   &, &:hover {
     background-color: @hover-bg;
     border-bottom: 4px solid lighten(@brand-primary, 15%);
