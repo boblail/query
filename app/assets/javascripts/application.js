@@ -22,6 +22,7 @@
 //= require boot
 //= require handlebars_helpers
 //= require router
+//= require ext
 //= require_tree ./models
 //= require_tree ./templates
 //= require_tree ./views

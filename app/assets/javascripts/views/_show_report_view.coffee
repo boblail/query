@@ -47,12 +47,12 @@ class @ShowReportView extends Backbone.View
     
     html = '<table class="table table-striped tablesorter"><thead><tr>'
     for column in columns
-      html += "<th>#{column}</th>"
+      html += "<th class=\"type-#{column.type}\">#{column.name}</th>"
     html += "</tr></thead><tbody>"
     for row in results
       html += "<tr>"
       for column in columns
-        html += "<td>#{row[column]}</td>"
+        html += "<td class=\"type-#{column.type}\">#{@formatType row[column.name], column.type}</td>"
       html += "</tr>"
     html + "</tbody></table>"
     
@@ -60,6 +60,11 @@ class @ShowReportView extends Backbone.View
     @$el.find('#report_performed').html Handlebars.helpers.timeago performed
     @$el.find('#report_query_time').html Handlebars.helpers.formatDuration queryTime
     @$el.find('.tablesorter').tablesorter()
+  
+  formatType: (value, type)->
+    value = value.toString().commafy() if type in ['integer', 'decimal', 'percent']
+    value = "#{value}%" if type is 'percent'
+    value
   
   renderError: (jqXhr)->
     error = JSON.parse(jqXhr.responseText).error

@@ -15,6 +15,11 @@ class Report < ActiveRecord::Base
   end
   
   
+  def columns
+    super.map { |column| column.is_a?(String) ? { name: column, type: "general" } : column }
+  end
+  
+  
 private
   
   def perform
@@ -23,10 +28,27 @@ private
     
     self.performed_at = Time.now
     self.results = results.to_hash
-    self.columns = results.columns
+    self.columns = results.column_types.map { |name, type| { name: name, type: identify_type(type, name) } }
     self.query_time = (self.performed_at - start) * 1000
   rescue ActiveRecord::StatementInvalid
     errors.add :query, $!.message
+  end
+  
+  def identify_type(type, name)
+    case type
+    when ActiveRecord::Type::Text then "text"
+    when ActiveRecord::ConnectionAdapters::PostgreSQL::OID::Integer then "integer"
+    when ActiveRecord::ConnectionAdapters::PostgreSQL::OID::Decimal
+      return "percent" if name =~ /Percent/i
+      "decimal"
+    else
+      if Rails.env.development?
+        binding.pry
+      else
+        Rails.logger.warn "\e[33mUnrecognized type: #{type.inspect}"
+      end
+      "general"
+    end
   end
   
 end
