@@ -47,3 +47,15 @@
 }
 
 .type-integer, .type-decimal, .type-percent { text-align: right; }
+
+td.type-boolean {
+  text-indent: -9999em;
+
+  &::after {
+    font-family: 'FontAwesome';
+    text-indent: 0;
+    float: left;
+  }
+  &.true::after { content: '\f00c'; color: #64d025; }
+  &.false::after { content: '\f00d'; color: #ccc; }
+}

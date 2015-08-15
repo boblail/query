@@ -36,7 +36,8 @@ private
   
   def identify_type(type, name)
     case type
-    when ActiveRecord::Type::Text then "text"
+    when ActiveRecord::Type::Text, ActiveRecord::Type::String then "text"
+    when ActiveRecord::Type::Boolean then "boolean"
     when ActiveRecord::ConnectionAdapters::PostgreSQL::OID::Integer then "integer"
     when ActiveRecord::ConnectionAdapters::PostgreSQL::OID::Decimal
       return "percent" if name =~ /Percent/i

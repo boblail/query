@@ -52,7 +52,11 @@ class @ShowReportView extends Backbone.View
     for row in results
       html += "<tr>"
       for column in columns
-        html += "<td class=\"type-#{column.type}\">#{@formatType row[column.name], column.type}</td>"
+        html += "<td class=\"type-#{column.type}"
+        if column.type is 'boolean' 
+          html += " false" if column.type is 'boolean' and row[column.name] is 'f'
+          html += " true" if column.type is 'boolean' and row[column.name] is 't'
+        html += "\">#{@formatType row[column.name], column.type}</td>"
       html += "</tr>"
     html + "</tbody></table>"
     
